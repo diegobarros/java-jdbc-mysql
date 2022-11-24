@@ -2,6 +2,7 @@ package org.exemplo;
 
 import org.exemplo.models.Produto;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -173,6 +174,14 @@ public class Main {
 
         // DELETE: vamos excluir, remover ou apagar um registro no banco de dados.
         // excluirProduto(4);
+=======
+public class Main {
+
+    public static void main(String[] args) {
+
+        Produto p = new Produto("Iphone", 8000, 12);
+        System.out.println(p.toString());
+>>>>>>> af05135c1d93edc2cf7b6f71112c5fac72d8809f
 
     } // Fim do método main
 

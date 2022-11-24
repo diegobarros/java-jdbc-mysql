@@ -1,11 +1,15 @@
 package org.exemplo.models;
 
+import java.text.NumberFormat;
+
 /***
  * Representa um Produto vendido por uma loja qualquer
  * @author Prof. Diego Augusto Barros
  * @version %I%, %G%
  */
 public class Produto {
+
+    private long id;
 
     private String nome;
     private double preco;
@@ -15,6 +19,7 @@ public class Produto {
      * Inicializa um novo Produto
      */
     public Produto() {
+        id = 0L;
         nome = "";
         preco = 0.0;
         quantidade = 0;
@@ -30,6 +35,28 @@ public class Produto {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+    }
+
+    /***
+     * Inicializa um novo Produto
+     * @param id O identificador único do produto
+     * @param nome O nome do produto.
+     * @param preco O preço em reais (R$) do produto.
+     * @param quantidade A quantidade em estoque do produto.
+     */
+    public Produto(long id, String nome, double preco, int quantidade) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    /**
+     * Obtém o ID do produto
+     * @return a chave primária do produto
+     */
+    public long getId() {
+        return id;
     }
 
     /**
@@ -92,6 +119,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return String.format("%s \t %d \t R$ %.2f", nome, quantidade, preco);
+        NumberFormat moeda = NumberFormat.getCurrencyInstance();
+        String precoFormatado = moeda.format(preco);
+        return String.format("%06d\t%-80S\t%5d\t%12s", id, nome, quantidade, precoFormatado);
     }
 }
